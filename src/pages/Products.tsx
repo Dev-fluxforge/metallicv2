@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Search, SlidersHorizontal, ShoppingCart, Star, ChevronDown } from 'lucide-react';
 import { PRODUCTS } from '../constants';
@@ -23,13 +24,13 @@ const Products: React.FC = () => {
         {/* Header */}
         <div className="mb-16">
           <h1 className="text-6xl md:text-8xl mb-6">Our <span className="text-brand-primary">Collection</span></h1>
-          <p className="text-white/60 text-lg max-w-2xl font-light">Precision engineered gear for the modern rider. Filter by category or search for specific items.</p>
+          <p className="text-brand-text/60 text-lg max-w-2xl font-light">Precision engineered gear for the modern rider. Filter by category or search for specific items.</p>
         </div>
 
         {/* Controls */}
         <div className="flex flex-col lg:flex-row gap-6 mb-12">
           <div className="relative flex-1">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20" />
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-text/20" />
             <input 
               type="text" 
               placeholder="Search products..." 
@@ -43,19 +44,19 @@ const Products: React.FC = () => {
               <button 
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-8 py-5 rounded-full border text-xs font-bold uppercase tracking-widest whitespace-nowrap transition-all ${activeCategory === cat ? 'bg-brand-primary border-brand-primary text-brand-dark' : 'border-brand-line hover:border-white/40'}`}
+                className={`px-8 py-5 rounded-full border text-xs font-bold uppercase tracking-widest whitespace-nowrap transition-all ${activeCategory === cat ? 'bg-brand-primary border-brand-primary text-brand-dark' : 'border-brand-line hover:border-brand-text/40'}`}
               >
                 {cat}
               </button>
             ))}
           </div>
-          <button className="px-8 py-5 border border-brand-line rounded-full flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:bg-white/5 transition-all">
+          <button className="px-8 py-5 border border-brand-line rounded-full flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:bg-brand-surface transition-all">
             <SlidersHorizontal className="w-4 h-4" /> Sort <ChevronDown className="w-4 h-4" />
           </button>
         </div>
 
         {/* Results Info */}
-        <div className="mb-12 flex justify-between items-center text-xs font-mono text-white/40 uppercase tracking-widest">
+        <div className="mb-12 flex justify-between items-center text-xs font-mono text-brand-text/40 uppercase tracking-widest">
           <p>Showing {filteredProducts.length} results</p>
           <p>Lagos, Nigeria</p>
         </div>
@@ -76,16 +77,18 @@ const Products: React.FC = () => {
                     {product.discount}
                   </span>
                 </div>
-                <img 
-                  src={product.image} 
-                  alt={product.name} 
-                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" 
-                  referrerPolicy="no-referrer"
-                />
+                <Link to={`/product/${product.id}`} className="w-full h-full flex items-center justify-center">
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" 
+                    referrerPolicy="no-referrer"
+                  />
+                </Link>
                 <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                   <button 
                     onClick={() => addToCart(product)}
-                    className="w-full py-4 bg-white text-brand-dark font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-brand-primary transition-colors"
+                    className="w-full py-4 bg-brand-text text-brand-bg font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-brand-primary hover:text-brand-dark transition-colors"
                   >
                     <ShoppingCart className="w-4 h-4" /> Add to Cart
                   </button>
@@ -93,16 +96,18 @@ const Products: React.FC = () => {
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between items-start gap-4">
-                  <h4 className="text-sm font-bold leading-tight group-hover:text-brand-primary transition-colors line-clamp-2">{product.name}</h4>
+                  <Link to={`/product/${product.id}`}>
+                    <h4 className="text-sm font-bold leading-tight group-hover:text-brand-primary transition-colors line-clamp-2">{product.name}</h4>
+                  </Link>
                   <div className="flex items-center gap-1 text-brand-primary">
                     <Star className="w-3 h-3 fill-current" />
                     <span className="text-[10px] font-bold">4.9</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 font-mono">
-                  <span className="text-lg text-white">₦{product.price.toLocaleString()}</span>
+                  <span className="text-lg text-brand-text">₦{product.price.toLocaleString()}</span>
                   {product.oldPrice && (
-                    <span className="text-sm text-white/30 line-through">₦{product.oldPrice.toLocaleString()}</span>
+                    <span className="text-sm text-brand-text/30 line-through">₦{product.oldPrice.toLocaleString()}</span>
                   )}
                 </div>
               </div>
@@ -113,10 +118,10 @@ const Products: React.FC = () => {
         {filteredProducts.length === 0 && (
           <div className="py-32 text-center">
             <div className="w-20 h-20 bg-brand-surface border border-brand-line rounded-full flex items-center justify-center mx-auto mb-8">
-              <Search className="w-8 h-8 text-white/20" />
+              <Search className="w-8 h-8 text-brand-text/20" />
             </div>
             <h3 className="text-2xl mb-4">No products found</h3>
-            <p className="text-white/40 max-w-md mx-auto">We couldn't find any products matching your current search or filters. Try adjusting them.</p>
+            <p className="text-brand-text/40 max-w-md mx-auto">We couldn't find any products matching your current search or filters. Try adjusting them.</p>
             <button 
               onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}
               className="mt-8 px-8 py-4 bg-brand-primary text-brand-dark font-bold uppercase tracking-widest text-xs"

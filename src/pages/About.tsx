@@ -27,7 +27,7 @@ const About: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-white/60 text-lg font-light leading-relaxed"
+            className="text-brand-text/60 text-lg font-light leading-relaxed"
           >
             Metallic Horses was born from a simple idea: that every rider deserves gear that matches their ambition. We don't just sell equipment; we provide the confidence to explore.
           </motion.p>
@@ -41,7 +41,7 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             className="aspect-[16/10] bg-brand-surface rounded-[2rem] overflow-hidden border border-brand-line"
           >
-            <img src="image/Helmet.png" alt="Workshop" className="w-full h-full object-cover opacity-60" referrerPolicy="no-referrer" />
+            <img src="image/Helmet.png" alt="Workshop" className="w-full h-full object-cover dark:opacity-60 opacity-90" referrerPolicy="no-referrer" />
           </motion.div>
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
@@ -49,7 +49,7 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             className="aspect-[16/10] bg-brand-surface rounded-[2rem] overflow-hidden border border-brand-line"
           >
-            <img src="image/Jaket.png" alt="Rider" className="w-full h-full object-cover opacity-60" referrerPolicy="no-referrer" />
+            <img src="image/Jaket.png" alt="Rider" className="w-full h-full object-cover dark:opacity-60 opacity-90" referrerPolicy="no-referrer" />
           </motion.div>
         </div>
 
@@ -73,7 +73,7 @@ const About: React.FC = () => {
                 <item.icon className="w-8 h-8 text-brand-primary" />
               </div>
               <h3 className="text-2xl">{item.title}</h3>
-              <p className="text-white/40 text-sm leading-relaxed">{item.desc}</p>
+              <p className="text-brand-text/40 text-sm leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -83,14 +83,14 @@ const About: React.FC = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
           <div className="relative z-10 max-w-2xl">
             <h2 className="text-4xl md:text-6xl mb-8">Our <span className="text-brand-primary">Mission</span></h2>
-            <p className="text-white/60 text-lg font-light leading-relaxed mb-8">
+            <p className="text-brand-text/60 text-lg font-light leading-relaxed mb-8">
               To empower the global riding community with gear that blends uncompromising safety with cutting-edge style. We believe the road is a place of freedom, and our job is to make sure you're ready for whatever it throws at you.
             </p>
             <div className="flex items-center gap-6">
               <div className="h-12 w-[1px] bg-brand-primary" />
               <div>
                 <p className="text-xl font-display">Fluxforge Team</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Founders of Metallic Horses</p>
+                <p className="text-xs text-brand-text/40 uppercase tracking-widest">Founders of Metallic Horses</p>
               </div>
             </div>
           </div>

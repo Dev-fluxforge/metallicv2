@@ -8,13 +8,28 @@
   
   --color-brand-primary: #FFC94A;
   --color-brand-dark: #0A0A0A;
-  --color-brand-surface: #141414;
-  --color-brand-line: #262626;
+  
+  /* Default (Light) Mode */
+  --color-brand-bg: #FFFFFF;
+  --color-brand-text: #0A0A0A;
+  --color-brand-surface: #F5F5F5;
+  --color-brand-line: #E5E5E5;
+  --color-brand-muted: #737373;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-brand-bg: #0A0A0A;
+    --color-brand-text: #FFFFFF;
+    --color-brand-surface: #141414;
+    --color-brand-line: #262626;
+    --color-brand-muted: #A3A3A3;
+  }
 }
 
 @layer base {
   body {
-    @apply bg-brand-dark text-white font-sans antialiased;
+    @apply bg-brand-bg text-brand-text font-sans antialiased transition-colors duration-300;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -28,7 +43,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-brand-dark;
+  @apply bg-brand-bg;
 }
 
 ::-webkit-scrollbar-thumb {

@@ -28,7 +28,7 @@ const Contact: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-white/60 text-lg font-light leading-relaxed mb-12"
+              className="text-brand-text/60 text-lg font-light leading-relaxed mb-12"
             >
               Have a question about our gear? Need help with an order? Or just want to talk bikes? Our team is here to help you get back on the road.
             </motion.p>
@@ -51,7 +51,7 @@ const Contact: React.FC = () => {
                     <item.icon className="w-6 h-6 text-brand-primary" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-1">{item.title}</h3>
+                    <h3 className="text-sm font-bold uppercase tracking-widest text-brand-text/40 mb-1">{item.title}</h3>
                     <p className="text-lg">{item.content}</p>
                   </div>
                 </motion.div>
@@ -76,17 +76,17 @@ const Contact: React.FC = () => {
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-4">Full Name</label>
-                  <input type="text" placeholder="John Doe" className="w-full bg-brand-dark border border-brand-line rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-primary transition-colors" />
+                  <label className="text-[10px] uppercase tracking-widest font-bold text-brand-text/40 ml-4">Full Name</label>
+                  <input type="text" placeholder="John Doe" className="w-full bg-brand-bg border border-brand-line rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-primary transition-colors" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-4">Email Address</label>
-                  <input type="email" placeholder="john@example.com" className="w-full bg-brand-dark border border-brand-line rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-primary transition-colors" />
+                  <label className="text-[10px] uppercase tracking-widest font-bold text-brand-text/40 ml-4">Email Address</label>
+                  <input type="email" placeholder="john@example.com" className="w-full bg-brand-bg border border-brand-line rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-primary transition-colors" />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-4">Subject</label>
-                <select className="w-full bg-brand-dark border border-brand-line rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-primary transition-colors appearance-none">
+                <label className="text-[10px] uppercase tracking-widest font-bold text-brand-text/40 ml-4">Subject</label>
+                <select className="w-full bg-brand-bg border border-brand-line rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-primary transition-colors appearance-none">
                   <option>General Inquiry</option>
                   <option>Order Support</option>
                   <option>Product Question</option>
@@ -94,10 +94,10 @@ const Contact: React.FC = () => {
                 </select>
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-4">Message</label>
-                <textarea rows={5} placeholder="How can we help you?" className="w-full bg-brand-dark border border-brand-line rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-primary transition-colors resize-none"></textarea>
+                <label className="text-[10px] uppercase tracking-widest font-bold text-brand-text/40 ml-4">Message</label>
+                <textarea rows={5} placeholder="How can we help you?" className="w-full bg-brand-bg border border-brand-line rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-primary transition-colors resize-none"></textarea>
               </div>
-              <button className="w-full py-5 bg-brand-primary text-brand-dark font-bold uppercase tracking-widest hover:bg-white transition-all flex items-center justify-center gap-3">
+              <button className="w-full py-5 bg-brand-primary text-brand-dark font-bold uppercase tracking-widest hover:bg-brand-bg hover:text-brand-text border border-brand-primary transition-all flex items-center justify-center gap-3">
                 Send Message <Send className="w-5 h-5" />
               </button>
             </form>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowRight, ChevronRight, Star, Search, ShoppingCart, Mail } from 'lucide-react';
 import { useCart } from '../context/CartContext';
@@ -12,13 +13,13 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-bg via-brand-bg/80 to-transparent z-10" />
           <motion.img 
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 0.4 }}
             transition={{ duration: 1.5 }}
             src="image/Helmet.png" 
-            className="w-full h-full object-cover object-right"
+            className="w-full h-full object-cover object-right dark:opacity-40 opacity-80"
             referrerPolicy="no-referrer"
           />
         </div>
@@ -36,16 +37,16 @@ const Home: React.FC = () => {
             <h1 className="text-6xl md:text-8xl lg:text-9xl leading-[0.85] mb-8">
               Unleash the <br /> <span className="text-brand-primary">Road Warrior</span>
             </h1>
-            <p className="text-lg text-white/60 max-w-lg mb-10 font-light leading-relaxed">
+            <p className="text-lg text-brand-text/60 max-w-lg mb-10 font-light leading-relaxed">
               Gear up with Metallic Horses. Precision engineered kits for those who push boundaries. Ride safer, ride bolder, and dominate every mile.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="#products" className="px-8 py-4 bg-brand-primary text-brand-dark font-bold uppercase tracking-widest hover:bg-white transition-all flex items-center gap-3 group">
+              <Link to="/products" className="px-8 py-4 bg-brand-primary text-brand-dark font-bold uppercase tracking-widest hover:bg-brand-bg hover:text-brand-text border border-brand-primary transition-all flex items-center gap-3 group">
                 Shop Now <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <button className="px-8 py-4 border border-brand-line hover:bg-white/5 transition-all font-bold uppercase tracking-widest">
+              </Link>
+              <Link to="/products" className="px-8 py-4 border border-brand-line hover:bg-brand-surface transition-all font-bold uppercase tracking-widest">
                 View Catalog
-              </button>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -56,18 +57,18 @@ const Home: React.FC = () => {
             <div className="flex gap-12">
               <div>
                 <p className="text-3xl font-display">15k+</p>
-                <p className="text-[10px] uppercase tracking-widest text-white/40">Happy Riders</p>
+                <p className="text-[10px] uppercase tracking-widest text-brand-text/40">Happy Riders</p>
               </div>
               <div>
                 <p className="text-3xl font-display">200+</p>
-                <p className="text-[10px] uppercase tracking-widest text-white/40">Premium Products</p>
+                <p className="text-[10px] uppercase tracking-widest text-brand-text/40">Premium Products</p>
               </div>
               <div>
                 <p className="text-3xl font-display">50+</p>
-                <p className="text-[10px] uppercase tracking-widest text-white/40">Global Brands</p>
+                <p className="text-[10px] uppercase tracking-widest text-brand-text/40">Global Brands</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 text-xs font-mono text-white/40">
+            <div className="flex items-center gap-4 text-xs font-mono text-brand-text/40">
               <span className="w-12 h-[1px] bg-brand-line" />
               ESTABLISHED 2024
             </div>
@@ -81,7 +82,7 @@ const Home: React.FC = () => {
           <div className="flex justify-between items-end mb-12">
             <div>
               <h2 className="text-4xl mb-2">Categories</h2>
-              <p className="text-white/40 text-sm">Browse our specialized gear collections</p>
+              <p className="text-brand-text/40 text-sm">Browse our specialized gear collections</p>
             </div>
             <button className="text-xs font-bold uppercase tracking-widest text-brand-primary flex items-center gap-2 hover:gap-3 transition-all">
               View All <ChevronRight className="w-4 h-4" />
@@ -112,11 +113,11 @@ const Home: React.FC = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
             <div className="max-w-xl">
               <h2 className="text-5xl md:text-6xl mb-4">Featured <span className="text-brand-primary">Gear</span></h2>
-              <p className="text-white/60 font-light">Explore our handpicked selection of high-performance motorcycle equipment, engineered for maximum safety and style.</p>
+              <p className="text-brand-text/60 font-light">Explore our handpicked selection of high-performance motorcycle equipment, engineered for maximum safety and style.</p>
             </div>
             <div className="flex gap-2">
               {['All', 'Helmets', 'Jackets', 'Boots'].map(filter => (
-                <button key={filter} className={`px-5 py-2 text-[10px] uppercase tracking-widest font-bold rounded-full border transition-all ${filter === 'All' ? 'bg-brand-primary border-brand-primary text-brand-dark' : 'border-brand-line hover:border-white/40'}`}>
+                <button key={filter} className={`px-5 py-2 text-[10px] uppercase tracking-widest font-bold rounded-full border transition-all ${filter === 'All' ? 'bg-brand-primary border-brand-primary text-brand-dark' : 'border-brand-line hover:border-brand-text/40'}`}>
                   {filter}
                 </button>
               ))}
@@ -138,19 +139,21 @@ const Home: React.FC = () => {
                       {product.discount}
                     </span>
                   </div>
-                  <button className="absolute top-4 right-4 z-10 p-2 bg-brand-dark/50 backdrop-blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-brand-primary hover:text-brand-dark">
+                  <Link to={`/product/${product.id}`} className="absolute top-4 right-4 z-10 p-2 bg-brand-bg/50 backdrop-blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-brand-primary hover:text-brand-dark">
                     <Search className="w-4 h-4" />
-                  </button>
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" 
-                    referrerPolicy="no-referrer"
-                  />
+                  </Link>
+                  <Link to={`/product/${product.id}`} className="w-full h-full flex items-center justify-center">
+                    <img 
+                      src={product.image} 
+                      alt={product.name} 
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" 
+                      referrerPolicy="no-referrer"
+                    />
+                  </Link>
                   <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                     <button 
                       onClick={() => addToCart(product)}
-                      className="w-full py-4 bg-white text-brand-dark font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-brand-primary transition-colors"
+                      className="w-full py-4 bg-brand-text text-brand-bg font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-brand-primary hover:text-brand-dark transition-colors"
                     >
                       <ShoppingCart className="w-4 h-4" /> Add to Cart
                     </button>
@@ -158,16 +161,18 @@ const Home: React.FC = () => {
                 </div>
                 <div className="space-y-2">
                   <div className="flex justify-between items-start gap-4">
-                    <h4 className="text-sm font-bold leading-tight group-hover:text-brand-primary transition-colors line-clamp-2">{product.name}</h4>
+                    <Link to={`/product/${product.id}`}>
+                      <h4 className="text-sm font-bold leading-tight group-hover:text-brand-primary transition-colors line-clamp-2">{product.name}</h4>
+                    </Link>
                     <div className="flex items-center gap-1 text-brand-primary">
                       <Star className="w-3 h-3 fill-current" />
                       <span className="text-[10px] font-bold">4.9</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 font-mono">
-                    <span className="text-lg text-white">₦{product.price.toLocaleString()}</span>
+                    <span className="text-lg text-brand-text">₦{product.price.toLocaleString()}</span>
                     {product.oldPrice && (
-                      <span className="text-sm text-white/30 line-through">₦{product.oldPrice.toLocaleString()}</span>
+                      <span className="text-sm text-brand-text/30 line-through">₦{product.oldPrice.toLocaleString()}</span>
                     )}
                   </div>
                 </div>
@@ -176,9 +181,9 @@ const Home: React.FC = () => {
           </div>
 
           <div className="mt-20 text-center">
-            <button className="px-12 py-5 border border-brand-line hover:bg-white hover:text-brand-dark transition-all font-bold uppercase tracking-widest text-sm">
+            <Link to="/products" className="inline-block px-12 py-5 border border-brand-line hover:bg-brand-text hover:text-brand-bg transition-all font-bold uppercase tracking-widest text-sm">
               Explore Full Collection
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -186,11 +191,11 @@ const Home: React.FC = () => {
       {/* Brands */}
       <section className="py-20 border-y border-brand-line overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-12">
-          <h2 className="text-center text-xs tracking-[0.3em] text-white/30 font-bold">BRANDS WE STOCK</h2>
+          <h2 className="text-center text-xs tracking-[0.3em] text-brand-text/30 font-bold">BRANDS WE STOCK</h2>
         </div>
         <div className="flex gap-20 animate-marquee whitespace-nowrap">
           {[...BRANDS, ...BRANDS].map((brand, i) => (
-            <img key={i} src={brand} alt="Brand" className="h-12 w-auto grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" referrerPolicy="no-referrer" />
+            <img key={i} src={brand} alt="Brand" className="h-12 w-auto grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer dark:invert" referrerPolicy="no-referrer" />
           ))}
         </div>
       </section>
@@ -237,7 +242,7 @@ const Home: React.FC = () => {
           <div className="flex justify-between items-end mb-16">
             <div>
               <h2 className="text-5xl mb-2">The <span className="text-brand-primary">Journal</span></h2>
-              <p className="text-white/40">Insights, guides, and stories from the road</p>
+              <p className="text-brand-text/40">Insights, guides, and stories from the road</p>
             </div>
             <button className="hidden md:flex text-xs font-bold uppercase tracking-widest text-brand-primary items-center gap-2 hover:gap-3 transition-all">
               Go to Blog <ChevronRight className="w-4 h-4" />
@@ -246,17 +251,19 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { img: "image/8.png", title: "Icon Contra 2 Jacket Review", date: "Oct 12, 2024" },
-              { img: "image/keg.png", title: "Maintenance Guide: Oil Change", date: "Oct 08, 2024" },
-              { img: "image/helement2.png", title: "Choosing the Right Helmet", date: "Sep 28, 2024" },
-              { img: "image/Oil.png", title: "Chain Care for Long Rides", date: "Sep 15, 2024" },
+              { id: 1, img: "image/8.png", title: "Icon Contra 2 Jacket Review", date: "Oct 12, 2024" },
+              { id: 2, img: "image/keg.png", title: "Maintenance Guide: Oil Change", date: "Oct 08, 2024" },
+              { id: 3, img: "image/helement2.png", title: "Choosing the Right Helmet", date: "Sep 28, 2024" },
+              { id: 4, img: "image/Oil.png", title: "Chain Care for Long Rides", date: "Sep 15, 2024" },
             ].map((post, i) => (
               <motion.div key={i} whileHover={{ y: -10 }} className="group cursor-pointer">
-                <div className="aspect-[16/10] bg-brand-surface border border-brand-line rounded-2xl overflow-hidden mb-6">
-                  <img src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" referrerPolicy="no-referrer" />
-                </div>
-                <p className="text-[10px] font-mono text-brand-primary mb-2 uppercase tracking-widest">{post.date}</p>
-                <h3 className="text-lg leading-tight group-hover:text-brand-primary transition-colors">{post.title}</h3>
+                <Link to={`/blog/${post.id}`}>
+                  <div className="aspect-[16/10] bg-brand-surface border border-brand-line rounded-2xl overflow-hidden mb-6">
+                    <img src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" referrerPolicy="no-referrer" />
+                  </div>
+                  <p className="text-[10px] font-mono text-brand-primary mb-2 uppercase tracking-widest">{post.date}</p>
+                  <h3 className="text-lg leading-tight group-hover:text-brand-primary transition-colors">{post.title}</h3>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -270,14 +277,14 @@ const Home: React.FC = () => {
             <Mail className="w-6 h-6 text-brand-primary" />
           </div>
           <h2 className="text-5xl mb-6">Join the <span className="text-brand-primary">Squad</span></h2>
-          <p className="text-white/60 mb-10 font-light text-lg">Subscribe to receive the latest updates on new arrivals, exclusive offers, and riding tips.</p>
+          <p className="text-brand-text/60 mb-10 font-light text-lg">Subscribe to receive the latest updates on new arrivals, exclusive offers, and riding tips.</p>
           <form className="relative max-w-lg mx-auto" onSubmit={(e) => e.preventDefault()}>
             <input 
               type="email" 
               placeholder="Enter your email address" 
               className="w-full bg-brand-surface border border-brand-line rounded-full px-8 py-5 focus:outline-none focus:border-brand-primary transition-colors pr-36"
             />
-            <button className="absolute right-2 top-2 bottom-2 px-8 bg-brand-primary text-brand-dark font-bold uppercase text-[10px] tracking-widest rounded-full hover:bg-white transition-colors">
+            <button className="absolute right-2 top-2 bottom-2 px-8 bg-brand-primary text-brand-dark font-bold uppercase text-[10px] tracking-widest rounded-full hover:bg-brand-bg hover:text-brand-text transition-colors">
               Subscribe
             </button>
           </form>

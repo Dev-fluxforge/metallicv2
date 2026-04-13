@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 
@@ -66,7 +67,7 @@ const Blog: React.FC = () => {
         {/* Header */}
         <div className="mb-20">
           <h1 className="text-6xl md:text-8xl mb-6">The <span className="text-brand-primary">Journal</span></h1>
-          <p className="text-white/60 text-lg max-w-2xl font-light">Stories from the road, expert gear reviews, and maintenance guides to keep you riding longer and safer.</p>
+          <p className="text-brand-text/60 text-lg max-w-2xl font-light">Stories from the road, expert gear reviews, and maintenance guides to keep you riding longer and safer.</p>
         </div>
 
         {/* Featured Post */}
@@ -75,22 +76,24 @@ const Blog: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="relative aspect-[21/9] bg-brand-surface rounded-[2rem] overflow-hidden border border-brand-line mb-20 group cursor-pointer"
         >
-          <img src={BLOG_POSTS[0].image} alt="Featured" className="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000" referrerPolicy="no-referrer" />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 p-8 md:p-12 max-w-3xl">
-            <span className="px-3 py-1 bg-brand-primary text-brand-dark text-[10px] font-bold uppercase rounded mb-4 inline-block">Featured Post</span>
-            <h2 className="text-4xl md:text-6xl mb-6 group-hover:text-brand-primary transition-colors">{BLOG_POSTS[0].title}</h2>
-            <div className="flex items-center gap-6 text-xs text-white/40 uppercase tracking-widest font-bold">
-              <span className="flex items-center gap-2"><Calendar className="w-4 h-4 text-brand-primary" /> {BLOG_POSTS[0].date}</span>
-              <span className="flex items-center gap-2"><User className="w-4 h-4 text-brand-primary" /> {BLOG_POSTS[0].author}</span>
+          <Link to={`/blog/${BLOG_POSTS[0].id}`} className="block w-full h-full">
+            <img src={BLOG_POSTS[0].image} alt="Featured" className="w-full h-full object-cover dark:opacity-40 opacity-80 group-hover:scale-105 transition-transform duration-1000" referrerPolicy="no-referrer" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 p-8 md:p-12 max-w-3xl">
+              <span className="px-3 py-1 bg-brand-primary text-brand-dark text-[10px] font-bold uppercase rounded mb-4 inline-block">Featured Post</span>
+              <h2 className="text-4xl md:text-6xl mb-6 group-hover:text-brand-primary transition-colors">{BLOG_POSTS[0].title}</h2>
+              <div className="flex items-center gap-6 text-xs text-brand-text/40 uppercase tracking-widest font-bold">
+                <span className="flex items-center gap-2"><Calendar className="w-4 h-4 text-brand-primary" /> {BLOG_POSTS[0].date}</span>
+                <span className="flex items-center gap-2"><User className="w-4 h-4 text-brand-primary" /> {BLOG_POSTS[0].author}</span>
+              </div>
             </div>
-          </div>
+          </Link>
         </motion.div>
 
         {/* Categories Filter */}
         <div className="flex flex-wrap gap-4 mb-16 border-b border-brand-line pb-8">
           {['All Posts', 'Reviews', 'Maintenance', 'Guides', 'Travel', 'Tech'].map((cat, i) => (
-            <button key={i} className={`px-6 py-2 rounded-full border text-xs font-bold uppercase tracking-widest transition-all ${i === 0 ? 'bg-brand-primary border-brand-primary text-brand-dark' : 'border-brand-line hover:border-white/40'}`}>
+            <button key={i} className={`px-6 py-2 rounded-full border text-xs font-bold uppercase tracking-widest transition-all ${i === 0 ? 'bg-brand-primary border-brand-primary text-brand-dark' : 'border-brand-line hover:border-brand-text/40'}`}>
               {cat}
             </button>
           ))}
@@ -107,29 +110,31 @@ const Blog: React.FC = () => {
               transition={{ delay: i * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className="aspect-[16/10] bg-brand-surface border border-brand-line rounded-2xl overflow-hidden mb-6">
-                <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80" referrerPolicy="no-referrer" />
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-brand-primary uppercase tracking-widest">{post.category}</span>
-                  <span className="text-[10px] text-white/40 uppercase tracking-widest">{post.date}</span>
+              <Link to={`/blog/${post.id}`}>
+                <div className="aspect-[16/10] bg-brand-surface border border-brand-line rounded-2xl overflow-hidden mb-6">
+                  <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 dark:opacity-80 opacity-100" referrerPolicy="no-referrer" />
                 </div>
-                <h3 className="text-2xl leading-tight group-hover:text-brand-primary transition-colors">{post.title}</h3>
-                <p className="text-white/40 text-sm line-clamp-2 font-light leading-relaxed">{post.excerpt}</p>
-                <div className="pt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest group-hover:gap-4 transition-all">
-                  Read More <ArrowRight className="w-4 h-4 text-brand-primary" />
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono text-brand-primary uppercase tracking-widest">{post.category}</span>
+                    <span className="text-[10px] text-brand-text/40 uppercase tracking-widest">{post.date}</span>
+                  </div>
+                  <h3 className="text-2xl leading-tight group-hover:text-brand-primary transition-colors">{post.title}</h3>
+                  <p className="text-brand-text/40 text-sm line-clamp-2 font-light leading-relaxed">{post.excerpt}</p>
+                  <div className="pt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest group-hover:gap-4 transition-all">
+                    Read More <ArrowRight className="w-4 h-4 text-brand-primary" />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
 
         {/* Pagination */}
         <div className="mt-24 flex justify-center gap-4">
-          <button className="w-12 h-12 rounded-full border border-brand-line flex items-center justify-center hover:bg-white/5 transition-all text-white/40">1</button>
+          <button className="w-12 h-12 rounded-full border border-brand-line flex items-center justify-center hover:bg-brand-surface transition-all text-brand-text/40">1</button>
           <button className="w-12 h-12 rounded-full border border-brand-primary bg-brand-primary text-brand-dark flex items-center justify-center font-bold">2</button>
-          <button className="w-12 h-12 rounded-full border border-brand-line flex items-center justify-center hover:bg-white/5 transition-all text-white/40">3</button>
+          <button className="w-12 h-12 rounded-full border border-brand-line flex items-center justify-center hover:bg-brand-surface transition-all text-brand-text/40">3</button>
         </div>
       </div>
     </div>

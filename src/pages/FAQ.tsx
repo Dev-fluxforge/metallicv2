@@ -44,7 +44,7 @@ const FAQ: React.FC = () => {
             Common <span className="text-brand-primary">Questions</span>
           </motion.h1>
           <div className="relative max-w-xl mx-auto">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20" />
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-text/20" />
             <input 
               type="text" 
               placeholder="Search for answers..." 
@@ -61,7 +61,7 @@ const FAQ: React.FC = () => {
             >
               <button 
                 onClick={() => setActiveIndex(activeIndex === i ? null : i)}
-                className="w-full p-8 flex justify-between items-center text-left hover:bg-white/5 transition-colors"
+                className="w-full p-8 flex justify-between items-center text-left hover:bg-brand-bg transition-colors"
               >
                 <span className="text-xl font-medium pr-8">{faq.question}</span>
                 <div className={`w-8 h-8 rounded-full border border-brand-line flex items-center justify-center shrink-0 transition-all ${activeIndex === i ? 'bg-brand-primary border-brand-primary text-brand-dark rotate-180' : ''}`}>
@@ -76,7 +76,7 @@ const FAQ: React.FC = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="px-8 pb-8 text-white/40 leading-relaxed">
+                    <div className="px-8 pb-8 text-brand-text/40 leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>

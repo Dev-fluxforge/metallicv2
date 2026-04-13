@@ -22,9 +22,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-brand-dark selection:bg-brand-primary selection:text-brand-dark">
+    <div className="min-h-screen bg-brand-bg selection:bg-brand-primary selection:text-brand-dark">
       {/* Navigation */}
-      <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? 'bg-brand-dark/80 backdrop-blur-xl border-b border-brand-line py-3' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? 'bg-brand-bg/80 backdrop-blur-xl border-b border-brand-line py-3' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="hidden lg:flex items-center gap-8">
             <Link to="/" className="text-sm font-medium hover:text-brand-primary transition-colors">Home</Link>
@@ -33,7 +33,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
 
           <Link to="/" className="flex-shrink-0">
-            <img src="image/image 1.png" alt="Metallic Horses" className="h-12 w-auto" referrerPolicy="no-referrer" />
+            <img src="image/image 1.png" alt="Metallic Horses" className="h-12 w-auto dark:invert dark:opacity-90 opacity-100" referrerPolicy="no-referrer" />
           </Link>
 
           <div className="flex items-center gap-6">
@@ -43,7 +43,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </div>
             <button 
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2 hover:bg-white/10 rounded-full transition-colors group"
+              className="relative p-2 hover:bg-brand-surface rounded-full transition-colors group"
             >
               <ShoppingCart className="w-6 h-6 group-hover:text-brand-primary transition-colors" />
               {cartCount > 0 && (
@@ -53,7 +53,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               )}
             </button>
             <button 
-              className="lg:hidden p-2 hover:bg-white/10 rounded-full transition-colors"
+              className="lg:hidden p-2 hover:bg-brand-surface rounded-full transition-colors"
               onClick={() => setIsMobileMenuOpen(true)}
             >
               <Menu className="w-6 h-6" />
@@ -69,14 +69,14 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            className="fixed inset-0 z-[60] bg-brand-dark flex flex-col p-8"
+            className="fixed inset-0 z-[60] bg-brand-bg flex flex-col p-8"
           >
             <div className="flex justify-end mb-12">
-              <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 hover:bg-white/10 rounded-full">
+              <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 hover:bg-brand-surface rounded-full">
                 <X className="w-8 h-8" />
               </button>
             </div>
-            <div className="flex flex-col gap-8 text-4xl font-display">
+            <div className="flex flex-col gap-8 text-4xl font-display text-brand-text">
               <Link to="/">Home</Link>
               <Link to="/about">About Us</Link>
               <Link to="/blog">MH Blog</Link>
@@ -94,13 +94,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
             <div className="space-y-8">
-              <img src="image/image 1.png" alt="Logo" className="h-12 w-auto" referrerPolicy="no-referrer" />
-              <p className="text-white/40 text-sm leading-relaxed">
+              <img src="image/image 1.png" alt="Logo" className="h-12 w-auto dark:invert dark:opacity-90 opacity-100" referrerPolicy="no-referrer" />
+              <p className="text-brand-text/60 text-sm leading-relaxed">
                 Metallic Horses is your premier destination for high-performance motorcycle gear. We prioritize quality, safety, and the thrill of the ride.
               </p>
               <div className="flex gap-4">
                 {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                  <a key={i} href="#" className="p-3 bg-brand-dark border border-brand-line rounded-full hover:border-brand-primary hover:text-brand-primary transition-all">
+                  <a key={i} href="#" className="p-3 bg-brand-bg border border-brand-line rounded-full hover:border-brand-primary hover:text-brand-primary transition-all text-brand-text">
                     <Icon className="w-4 h-4" />
                   </a>
                 ))}
@@ -109,7 +109,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
             <div>
               <h4 className="text-lg mb-8">Quick Links</h4>
-              <ul className="space-y-4 text-sm text-white/40">
+              <ul className="space-y-4 text-sm text-brand-text/60">
                 <li><Link to="/about" className="hover:text-brand-primary transition-colors">About Us</Link></li>
                 <li><Link to="/products" className="hover:text-brand-primary transition-colors">Our Products</Link></li>
                 <li><Link to="/blog" className="hover:text-brand-primary transition-colors">MH Blog</Link></li>
@@ -120,7 +120,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
             <div>
               <h4 className="text-lg mb-8">Support</h4>
-              <ul className="space-y-4 text-sm text-white/40">
+              <ul className="space-y-4 text-sm text-brand-text/60">
                 <li><Link to="/terms" className="hover:text-brand-primary transition-colors">Terms & Conditions</Link></li>
                 <li><Link to="/privacy" className="hover:text-brand-primary transition-colors">Privacy Policy</Link></li>
                 <li><Link to="/returns" className="hover:text-brand-primary transition-colors">Returns & Refunds</Link></li>
@@ -131,7 +131,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
             <div>
               <h4 className="text-lg mb-8">Contact Info</h4>
-              <ul className="space-y-6 text-sm text-white/40">
+              <ul className="space-y-6 text-sm text-brand-text/60">
                 <li className="flex gap-4">
                   <MapPin className="w-5 h-5 text-brand-primary shrink-0" />
                   <span>13 Celestial Way, Ogudu Orioke Lagos</span>
@@ -148,12 +148,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </div>
           </div>
 
-          <div className="pt-12 border-t border-brand-line flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-[0.2em] text-white/20 font-bold">
+          <div className="pt-12 border-t border-brand-line flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-[0.2em] text-brand-text/20 font-bold">
             <p>© 2024 FLUXFORGE. ALL RIGHTS RESERVED.</p>
             <div className="flex gap-8">
-              <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-              <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
-              <Link to="/faq" className="hover:text-white transition-colors">Cookies</Link>
+              <Link to="/privacy" className="hover:text-brand-text transition-colors">Privacy</Link>
+              <Link to="/terms" className="hover:text-brand-text transition-colors">Terms</Link>
+              <Link to="/cookies" className="hover:text-brand-text transition-colors">Cookies</Link>
             </div>
           </div>
         </div>
@@ -179,7 +179,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             >
               <div className="p-8 border-b border-brand-line flex justify-between items-center">
                 <h2 className="text-2xl">Your Cart <span className="text-brand-primary ml-2">({cartCount})</span></h2>
-                <button onClick={() => setIsCartOpen(false)} className="p-2 hover:bg-white/10 rounded-full transition-colors">
+                <button onClick={() => setIsCartOpen(false)} className="p-2 hover:bg-brand-bg/10 rounded-full transition-colors">
                   <X className="w-6 h-6" />
                 </button>
               </div>
@@ -188,11 +188,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 {cart.length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-center space-y-6">
                     <div className="w-20 h-20 bg-brand-line rounded-full flex items-center justify-center">
-                      <ShoppingCart className="w-8 h-8 text-white/20" />
+                      <ShoppingCart className="w-8 h-8 text-brand-text/20" />
                     </div>
                     <div>
                       <p className="text-lg font-bold mb-2">Your cart is empty</p>
-                      <p className="text-white/40 text-sm">Looks like you haven't added anything yet.</p>
+                      <p className="text-brand-text/40 text-sm">Looks like you haven't added anything yet.</p>
                     </div>
                     <button 
                       onClick={() => setIsCartOpen(false)}
@@ -204,7 +204,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 ) : (
                   cart.map((item) => (
                     <div key={item.id} className="flex gap-6 group">
-                      <div className="w-24 h-24 bg-brand-dark border border-brand-line rounded-2xl p-4 flex items-center justify-center shrink-0">
+                      <div className="w-24 h-24 bg-brand-bg border border-brand-line rounded-2xl p-4 flex items-center justify-center shrink-0">
                         <img src={item.image} alt={item.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
                       </div>
                       <div className="flex-1 min-w-0 py-1">
@@ -212,29 +212,29 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                           <h4 className="text-sm font-bold truncate pr-4">{item.name}</h4>
                           <button 
                             onClick={() => removeFromCart(item.id)}
-                            className="text-white/20 hover:text-red-500 transition-colors"
+                            className="text-brand-text/20 hover:text-red-500 transition-colors"
                           >
                             <X className="w-4 h-4" />
                           </button>
                         </div>
                         <p className="text-xs font-mono text-brand-primary mb-4">₦{item.price.toLocaleString()}</p>
                         <div className="flex items-center gap-4">
-                          <div className="flex items-center border border-brand-line rounded-lg bg-brand-dark">
+                          <div className="flex items-center border border-brand-line rounded-lg bg-brand-bg">
                             <button 
                               onClick={() => updateQuantity(item.id, -1)}
-                              className="w-8 h-8 flex items-center justify-center hover:bg-white/5 transition-colors"
+                              className="w-8 h-8 flex items-center justify-center hover:bg-brand-surface transition-colors"
                             >
                               -
                             </button>
                             <span className="w-8 text-center text-xs font-mono">{item.quantity}</span>
                             <button 
                               onClick={() => updateQuantity(item.id, 1)}
-                              className="w-8 h-8 flex items-center justify-center hover:bg-white/5 transition-colors"
+                              className="w-8 h-8 flex items-center justify-center hover:bg-brand-surface transition-colors"
                             >
                               +
                             </button>
                           </div>
-                          <p className="text-xs font-mono text-white/40">
+                          <p className="text-xs font-mono text-brand-text/40">
                             Total: ₦{(item.price * item.quantity).toLocaleString()}
                           </p>
                         </div>
@@ -245,15 +245,19 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </div>
 
               {cart.length > 0 && (
-                <div className="p-8 border-t border-brand-line bg-brand-dark/50 backdrop-blur-md">
+                <div className="p-8 border-t border-brand-line bg-brand-bg/50 backdrop-blur-md">
                   <div className="flex justify-between items-center mb-8">
-                    <span className="text-white/40 uppercase tracking-widest text-[10px] font-bold">Subtotal</span>
+                    <span className="text-brand-text/40 uppercase tracking-widest text-[10px] font-bold">Subtotal</span>
                     <span className="text-2xl font-mono">₦{total.toLocaleString()}</span>
                   </div>
-                  <button className="w-full py-5 bg-brand-primary text-brand-dark font-bold uppercase tracking-widest hover:bg-white transition-all flex items-center justify-center gap-3">
+                  <Link 
+                    to="/checkout"
+                    onClick={() => setIsCartOpen(false)}
+                    className="w-full py-5 bg-brand-primary text-brand-dark font-bold uppercase tracking-widest hover:bg-brand-bg hover:text-brand-text transition-all flex items-center justify-center gap-3"
+                  >
                     Checkout <ChevronRight className="w-5 h-5" />
-                  </button>
-                  <p className="text-center text-[10px] text-white/20 mt-6 uppercase tracking-widest">Shipping & taxes calculated at checkout</p>
+                  </Link>
+                  <p className="text-center text-[10px] text-brand-text/20 mt-6 uppercase tracking-widest">Shipping & taxes calculated at checkout</p>
                 </div>
               )}
             </motion.div>
