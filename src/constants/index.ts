@@ -9,6 +9,14 @@ export const PRODUCTS: Product[] = [
   { id: 6, name: "Motul 7100 4T 10W40", price: 500000, oldPrice: 560000, image: "image/keg.png", category: "Maintenance", discount: "20% off" },
   { id: 7, name: "Chain Lube & Cleaner Kit", price: 200000, oldPrice: 240000, image: "image/Oil.png", category: "Maintenance", discount: "20% off" },
   { id: 8, name: "Front Wheel Stand", price: 500000, oldPrice: 4500000, image: "image/stand.png", category: "Accessories", discount: "20% off" },
+  { id: 9, name: "Shoei X-SPR Pro Helmet", price: 850000, oldPrice: 920000, image: "image/helement2.png", category: "Helmets", discount: "15% off" },
+  { id: 10, name: "AGV Pista GP RR Carbon", price: 1200000, oldPrice: 1350000, image: "image/Helmet.png", category: "Helmets", discount: "10% off" },
+  { id: 11, name: "Dainese Misano 2 D-Air Suit", price: 2500000, oldPrice: 2800000, image: "image/Jaket.png", category: "Jackets", discount: "10% off" },
+  { id: 12, name: "Alpinestars Supertech R Boots", price: 550000, oldPrice: 600000, image: "image/Boot.png", category: "Boots", discount: "8% off" },
+  { id: 13, name: "Cardo Packtalk Edge Single", price: 350000, oldPrice: 380000, image: "image/stand.png", category: "Accessories", discount: "5% off" },
+  { id: 14, name: "Brembo RCS19 Corsa Corta", price: 420000, oldPrice: 450000, image: "image/ebc.png", category: "Parts", discount: "5% off" },
+  { id: 15, name: "Ohlins TTX RT Rear Shock", price: 1800000, oldPrice: 2000000, image: "image/ebc.png", category: "Parts", discount: "10% off" },
+  { id: 16, name: "K&N High-Flow Air Filter", price: 85000, oldPrice: 95000, image: "image/Filter Oil.png", category: "Maintenance", discount: "10% off" },
 ];
 
 export const CATEGORIES: Category[] = [
